@@ -5,6 +5,7 @@ $(document).ready(function(){
     const $humidity = $(".humidity");
     const $wind = $(".wind");
     const $uv = $(".uv");
+    let cities = [];
     
     $(document).on('click', ".searchBtn", function(){
         const $citySearch = $(".citySearch").val();
@@ -24,6 +25,12 @@ $(document).ready(function(){
                 var date = new Date(response.dt * 1000).toDateString();
                 $cityMenu.addClass("list-group-item").text(response.name);
                 $('.list-group').append($cityMenu);
+                if (localStorage.getItem("cities") != undefined){
+                    cities = JSON.parse(localStorage.getItem("cities"));
+                }
+                cities.push(response.name);
+                cities = JSON.stringify(cities);
+                localStorage.setItem("cities", cities);
 
                 $city.text(`${response.name} (${date})`);
                 $temp.text(`${response.main.temp} °F`);
@@ -35,7 +42,7 @@ $(document).ready(function(){
 
         })
     })
-    $(document).on('click', ".list-group-item", function(){
-        
-    })
+    // $(document).on('click', ".list-group-item", function(){
+
+    // })
 });
