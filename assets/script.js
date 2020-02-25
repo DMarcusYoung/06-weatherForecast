@@ -24,7 +24,7 @@ $(document).ready(function(){
         const $citySearch = $(".citySearch").val();
         const $cityMenu = $("<li>");
         // API url depending on the city
-        let url = "http://api.openweathermap.org/data/2.5/weather?q=" + $citySearch + "&units=imperial&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
+        let url = "https://api.openweathermap.org/data/2.5/weather?q=" + $citySearch + "&units=imperial&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
         
         // First ajax call is for all of the main weather data
         $.ajax({
@@ -32,7 +32,7 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
             // Second API call just for UV index
-            let uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon +"&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
+            let uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon +"&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
             $.ajax({
                 url: uvUrl,
                 method: "GET"
@@ -59,13 +59,13 @@ $(document).ready(function(){
     })
     // Event listener for the city menu
     $(document).on('click', ".list-group-item", function(){
-        let url = "http://api.openweathermap.org/data/2.5/weather?q=" + $(this).text() + "&units=imperial&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
+        let url = "https://api.openweathermap.org/data/2.5/weather?q=" + $(this).text() + "&units=imperial&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
         // Same API calls as before only it doesn't create a new menu item or save to local storage
         $.ajax({
             url,
             method: "GET"
         }).then(function(response){
-            let uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon +"&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
+            let uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon +"&APPID=89f1fcf0b3207d8d3c0dce4e4149158f"
             $.ajax({
                 url: uvUrl,
                 method: "GET"
