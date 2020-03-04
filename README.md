@@ -1,4 +1,4 @@
-# Weather Forcast
+# Weather Forecast
 
 ## Description
 Weather forcast application that shows the temperature, humidity, wind speed and UV Index of a given city. The cities that have been searched are saved to a menu even if the page is reloaded.
